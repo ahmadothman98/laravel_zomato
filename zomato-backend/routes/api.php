@@ -7,6 +7,7 @@ use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\RestosController;
 use App\Http\Controllers\CatagsController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,3 +27,5 @@ Route::post('/add_resto',[RestosController::class, 'addResto']);
 
 Route::post('/sign_up',[UsersController::class, 'signUp']);
 Route::post('/login',[UsersController::class,'login']);
+
+Route::get('/view_users',[AdminController::class,'viewUsers']);

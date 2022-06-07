@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCatagsTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateCatagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('catags', function (Blueprint $table) {
-            $table->id();
+        Schema::create('images', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('name');
+            $table->unsignedBigInteger('resto_id'); 
+            $table->foreign('resto_id')->references('id')->on('restos');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -28,6 +30,6 @@ class CreateCatagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catags');
+        Schema::dropIfExists('images');
     }
 }
