@@ -24,4 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/getresto/{id?}',[RestosController::class, 'getRestos']);
 Route::post('/add_resto',[RestosController::class, 'addResto']);
 
-Route::post('/add_user',[UsersController::class, 'addUser']);
+Route::post('/sign_up',[UsersController::class, 'signUp']);
+Route::post('/login',[UsersController::class,'login']);

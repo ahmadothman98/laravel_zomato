@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
  
 class UsersController extends Controller
 {   
-    public function addUser(Request $request){
+    public function signUp(Request $request){
         $user = new User;
         $user->fname = $request->fname;
         $user->lname = $request->lname;
@@ -24,5 +24,30 @@ class UsersController extends Controller
             "status" => "Success",
             "users" => $user
         ],200);
+    }
+    public function login(Request $request){
+        $email = $request->email;
+        $password = Hash::make($request->password);
+        $user = User::where('email', $request->email)->first();
+        if($user){
+            if(Hash::check($request->password, $user->password)){
+                return response() ->json([
+                    "status" => "Success",
+                    "user_id" => $user->id
+                ],200);
+            }
+            else{
+                    return response() ->json([
+                        "status" => "Fail"
+                    ],200);
+            }
+        }
+        else{
+            return response() ->json([
+                "status" => "Fail"
+            ],200);
+        }
+
+
     }
 }
