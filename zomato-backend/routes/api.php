@@ -22,10 +22,13 @@ use App\Http\Controllers\AdminController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/getresto/{id?}',[RestosController::class, 'getRestos']);
+Route::get('/get_resto/{id?}',[RestosController::class, 'getRestos']);
 Route::post('/add_resto',[RestosController::class, 'addResto']);
 
 Route::post('/sign_up',[UsersController::class, 'signUp']);
 Route::post('/login',[UsersController::class,'login']);
 
-Route::get('/view_users',[AdminController::class,'viewUsers']);
+Route::post('/get_users',[AdminController::class,'getUsers']);
+
+Route::post('/add_review',[ReviewsController::class,'addReview']);
+Route::get('/get_reviews/{id}',[ReviewsController::class,'getReviews']);

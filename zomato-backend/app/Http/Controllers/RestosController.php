@@ -10,7 +10,7 @@ use App\Models\Resto;
 class RestosController extends Controller
 {
     public function getRestos($id = null){
-        if($id !=null){
+        if($id != null){
             $restos = Resto::find($id);
         }
         else{

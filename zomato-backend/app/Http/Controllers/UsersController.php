@@ -34,7 +34,7 @@ class UsersController extends Controller
             if($error_code == 1062){
                 return response() ->json([
                     "status" => "duplicate entry"
-                ]);
+                ],200);
             }
         }
     }

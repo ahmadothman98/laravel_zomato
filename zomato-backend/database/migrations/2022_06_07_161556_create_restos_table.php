@@ -14,7 +14,7 @@ class CreateRestosTable extends Migration
     public function up()
     {
         Schema::create('restos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('name');
             $table->string('address');
             $table->string('catagories');
