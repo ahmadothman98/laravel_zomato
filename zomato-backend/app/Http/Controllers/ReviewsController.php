@@ -21,7 +21,7 @@ class ReviewsController extends Controller
         ],200);
     }
     public function getReviews($id){
-        $reviews = Review::find($id);
+        $reviews = Review::where('resto_id' , $id)->get();
         return response() -> json([
             "status" => 'ok',
             "reviews" => $reviews
